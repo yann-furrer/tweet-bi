@@ -1,14 +1,14 @@
 from ast import Str
 import tweepy
 import pandas as pd
-import csv
+import env
 # assuming twitter_authentication.py contains each of the 4 oauth elements (1 per line)
 # from twitter_authentication import , API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET
 
-API_KEY = 'iH36qMUTSc7oouBL6afqJw1tc'
-API_SECRET = 'QGuCWH2bpQg9Ti6Il63eNazE8ZkidA4Lc4j4NElggr8rEzjFjf'
-ACCESS_TOKEN = '1050095290135601163-7Q8mfZbQZKfll4Xmhjcqyu2ytWkPOC'
-ACCESS_TOKEN_SECRET = 'NNVbgT3ulFmcgCZc2Rybssaa4IyH7wVbmyzsZiKLtWeNe'
+API_KEY = env.api_key
+API_SECRET = env.api_secret
+ACCESS_TOKEN = env.access_token
+ACCESS_TOKEN_SECRET = env.access_token_secret
 auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
