@@ -6,13 +6,17 @@ import json
 from flask import Flask
 from flask import request
 
+from pathlib import Path
 
+
+# on obtient dynamiquement le chemin des fichiers
+path  = str(Path(__file__).parent)
 # Obtenir la liste des adresses IP et leur nombre de connexion
 def setIP():
     # On importe le fichier pour écrire sur la dernière version du fichier
-    if os.path.isfile('/home/yann/Desktop/python_api/tweet_bi/Data/ip.json'):
+    if os.path.isfile(path+'/Data/ip.json'):
         print ("File exist")
-        with open("../tweet_bi/Data/ip.json") as fp:
+        with open(path+"/Data/ip.json") as fp:
             iplist = json.load(fp)
         
         ip_found = False
@@ -31,7 +35,7 @@ def setIP():
             iplist.append({'ip': request.remote_addr, "nombre de connexion": count})
             
 
-        with open("../tweet_bi/Data/ip.json", 'w') as json_file:
+        with open(path+"/Data/ip.json", 'w') as json_file:
             json.dump(iplist, json_file, )
      
     

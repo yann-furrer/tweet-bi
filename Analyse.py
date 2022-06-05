@@ -1,7 +1,9 @@
 # import data file
 import pandas as pd
+from pathlib import Path
 
-dr = pd.read_csv("../tweet_bi/Data/tweet.csv")
+path  = str(Path(__file__).parent)
+dr = pd.read_csv(path+"/Data/tweet.csv")
 df = dr
 del df["Unnamed: 0"]
 df
@@ -92,7 +94,7 @@ def entity_recongnition(tweet_list_tokenized=tokenization()):
 
     dte.drop_duplicates(subset ="type entity",
                         keep = False, inplace = True)
-    dte.to_json("../tweet_bi/Data/entity.json")
+    dte.to_json(path+"/Data/entity.json")
 
 from flair.models import TextClassifier
 from flair.data import Sentence
@@ -127,4 +129,5 @@ def sentence_feeling():
     col = len(df.columns) + 1 
     df.insert(loc=len(df.columns), column='sentiment value', value= temp_array)
 
-df.to_csv('../tweet_bi/Data/tweet_clean.csv')
+df.to_csv(path+'/Data/tweet_clean.csv')
+print("analysis complete")

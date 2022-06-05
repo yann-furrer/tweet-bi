@@ -1,9 +1,15 @@
-from ast import Str
+
 import tweepy
 import pandas as pd
 import env
+
+from pathlib import Path
 # assuming twitter_authentication.py contains each of the 4 oauth elements (1 per line)
 # from twitter_authentication import , API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET
+path  = str(Path(__file__).parent)
+
+
+
 
 API_KEY = env.api_key
 API_SECRET = env.api_secret
@@ -48,5 +54,6 @@ for page in searched_tweets:
             # df = df.drop_duplicates("text", keep='first')
             df = pd.DataFrame(all_tweets)
            
-            df.to_csv('../tweet_bi/Data/tweet.csv')
+            df.to_csv(str(path)+'/Data/tweet.csv')
+print("tweets created")
     # Create dataframe 

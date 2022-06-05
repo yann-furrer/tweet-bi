@@ -7,9 +7,13 @@ import os.path
 from IP import *
 import csv
 # from tweet import get_tweets
+from pathlib import Path
+
+
+path  = str(Path(__file__).parent)
 
 try:
-     os.path.isfile('../tweet_bi/Data/ip.json')
+     os.path.isfile(path+'/Data/ip.json')
      print ("File exist")
 except ValueError:
      print ("File not exist")
@@ -28,7 +32,7 @@ def hello_world():
 @app.route('/tweet-entity')
 def tweet_entity():
     setIP()
-    with open("../tweet_bi/Data/entity.json") as jsonFile:
+    with open(path+"/Data/entity.json") as jsonFile:
         jsonObject = json.load(jsonFile)
         jsonFile.close()
     return jsonObject
@@ -36,7 +40,7 @@ def tweet_entity():
 # get teet.csv file which contains brut tweet data
 @app.route('/tweet-brut-csv')
 def form_example():
-    dr = pd.read_csv("../tweet_bi/Data/tweet.csv")
+    dr = pd.read_csv(path+"/Data/tweet.csv")
     resp = make_response(dr.to_csv())
     resp.headers["Content-Disposition"] = "attachment; filename=tweet.csv"
     resp.headers["Content-Type"] = "text/csv"
@@ -46,7 +50,7 @@ def form_example():
 
 @app.route('/json-example')
 def json_example():
-    dr = pd.read_csv("../tweet_bi/Data/tweet_clean.csv")
+    dr = pd.read_csv(path+"/Data/tweet_clean.csv")
     resp = make_response(dr.to_csv())
     resp.headers["Content-Disposition"] = "attachment; filename=tweet_clean.csv"
     resp.headers["Content-Type"] = "text/csv"
@@ -59,7 +63,7 @@ def json_example():
 @app.route("/get_ip")
 def get_my_ip():
     setIP()
-    with open("../API/Data/ip.json") as jsonFile:   
+    with open(path+"/Data/ip.json") as jsonFile:   
         return jsonFile.read()
      
 
