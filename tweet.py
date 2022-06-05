@@ -21,7 +21,7 @@ auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 api = tweepy.API(auth)
 
 query = 'Ukraine'
-max_tweets = 2
+max_tweets = 2000
 all_tweets = []
 df = {}
 
