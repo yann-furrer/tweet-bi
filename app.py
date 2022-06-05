@@ -22,11 +22,17 @@ except ValueError:
 
 app = Flask(__name__)
 
-
+html = "<center><ul>"\
+ "<li><h1>Data Tweet BI</h1></li>"\
+ "<li><h1>Liste des routes</h1></li>"\
+ "<li><h1>/tweet-entity</h1></li>"\
+ "<li><h1>/tweet-brut-csv</h1></li>"\
+ "<li><h1>/json-example</h1></li>"\
+ "<li><h1>/get_ip</h1></li></ul></center>"
 
 @app.route("/")
 def hello_world():
-    return "<center><h1>data tweet_bi</h1><h1>tweet-entity</h1><h1>tweet-brut-csv</h1></center>"
+    return html
 
 
 @app.route('/tweet-entity')
@@ -72,4 +78,4 @@ def get_my_ip():
 
 if __name__ == '__main__':
     # run app in debug mode on port 5000
-    app.run()
+    app.run(host="0.0.0.0")
