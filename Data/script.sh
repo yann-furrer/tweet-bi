@@ -3,16 +3,18 @@
 function tweet(){
    echo "refresh tweet"
    python3 tweet.py
-   sleep 130000
+   sleep 43200
 }
 
 function analyse(){
    echo "Analyse"
+   
    python3 Analyse.py
-   sleep 13100
+   sleep 43230
 }
 
+# boucle infint qui rexecute les deux fonctions toutes les 
 while : 
-do
-analyse && tweet
+   do
+      tweet && analyse
 done
